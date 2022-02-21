@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, invalid_use_of_protected_member
 
 import 'package:flutter/material.dart';
 
@@ -23,7 +23,7 @@ class HttpViewView extends GetView<HttpViewController> {
         child: Column(
           children: [
             Text(
-              'press button to test the http request:',
+              '過去14天內有嚴重急性呼吸綜合症冠狀病毒2的陽性檢測個案曾到訪的大廈名單',
               style: const TextStyle(fontSize: 20),
             ),
             ElevatedButton(
@@ -33,19 +33,31 @@ class HttpViewView extends GetView<HttpViewController> {
                 onPressed: () {
                   controller.httpRequest();
                 },
-                child: Text('http request')),
+                child: Text('Update')),
             Divider(
               height: 2.0,
               color: Colors.green,
             ),
-            Obx(() => Expanded(
-                  child: SingleChildScrollView(
-                    child: Text(
-                      controller.uiText.string,
-                      style: const TextStyle(fontSize: 12),
-                    ),
-                  ),
+            Obx(() => Text(
+                  'Total buildings found: ${controller.uiListString.length}',
+                  style: const TextStyle(fontSize: 20),
                 )),
+            Expanded(
+              child: Obx(
+                () => (controller.uiListString.length == 0)
+                    ? Text("No data")
+                    : ListView.builder(
+                        itemCount: controller.uiListString.length,
+                        itemBuilder: (context, index) {
+                          return Card(
+                            child: ListTile(
+                              title: Text(controller.uiListString[index]),
+                            ),
+                          );
+                        },
+                      ),
+              ),
+            )
           ],
         ),
       ),

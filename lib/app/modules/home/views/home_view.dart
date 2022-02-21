@@ -44,7 +44,7 @@ class HomeView extends GetView<HomeController> {
 
                         Get.toNamed('/http-view');
                       },
-                      child: Text('http page')),
+                      child: Text('大廈名單')),
                   ElevatedButton(
                       onPressed: () {
                         Get.toNamed('/dio');

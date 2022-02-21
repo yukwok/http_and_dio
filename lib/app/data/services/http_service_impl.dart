@@ -1,4 +1,7 @@
+// ignore_for_file: avoid_print
+
 import 'package:dio/dio.dart';
+// import 'package:flutter/material.dart';
 import 'package:http_and_dio/app/data/services/http_service.dart';
 
 String BASE_URL = "https://newsapi.org";
@@ -19,6 +22,20 @@ class HttpServiceImpl implements HttpService {
     return response;
   }
 
+  initInterceptor() {
+    _dio.interceptors.add(InterceptorsWrapper(
+      onError: (e, handler) {
+        print(e.message);
+      },
+      onRequest: (request, handler) {
+        print(request.method + " " + request.path);
+      },
+      onResponse: (response, handler) {
+        print(response.statusCode);
+      },
+    ));
+  }
+
   @override
   void init() {
     _dio = Dio(BaseOptions(
@@ -27,5 +44,7 @@ class HttpServiceImpl implements HttpService {
         "Authorization": "Bearer $API_KEY"
       }, //<== TODO: what is this header???
     ));
+
+    initInterceptor();
   }
 }

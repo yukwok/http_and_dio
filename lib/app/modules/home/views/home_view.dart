@@ -36,12 +36,6 @@ class HomeView extends GetView<HomeController> {
 
                       // ignore: prefer_const_constructors
                       onPressed: () {
-                        // Get.to(HttpViewView());
-
-                        //                       static const HOME = '/home';
-                        // static const HTTP_VIEW = '/http-view';
-                        // static const DIO = '/dio';
-
                         Get.toNamed('/http-view');
                       },
                       child: Text('大廈名單')),
@@ -50,6 +44,20 @@ class HomeView extends GetView<HomeController> {
                         Get.toNamed('/dio');
                       },
                       child: Text('dio page')),
+                  ElevatedButton(
+
+                      // ignore: prefer_const_constructors
+                      onPressed: () {
+                        Get.toNamed('/news-headlines');
+                      },
+                      child: Text('news headlines')),
+                  ElevatedButton(
+
+                      // ignore: prefer_const_constructors
+                      onPressed: () {
+                        Get.toNamed('/search-news');
+                      },
+                      child: Text('search headlines')),
                 ],
               )),
         ],

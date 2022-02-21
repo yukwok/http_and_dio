@@ -6,6 +6,8 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const HTTP_VIEW = _Paths.HTTP_VIEW;
   static const DIO = _Paths.DIO;
+  static const NEWS_HEADLINES = _Paths.NEWS_HEADLINES;
+  static const SEARCH_NEWS = _Paths.SEARCH_NEWS;
 }
 
 abstract class _Paths {
@@ -13,4 +15,6 @@ abstract class _Paths {
   static const HOME = '/home';
   static const HTTP_VIEW = '/http-view';
   static const DIO = '/dio';
+  static const NEWS_HEADLINES = '/news-headlines';
+  static const SEARCH_NEWS = '/search-news';
 }

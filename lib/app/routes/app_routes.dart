@@ -8,6 +8,7 @@ abstract class Routes {
   static const DIO = _Paths.DIO;
   static const NEWS_HEADLINES = _Paths.NEWS_HEADLINES;
   static const SEARCH_NEWS = _Paths.SEARCH_NEWS;
+  static const LANDING = _Paths.LANDING;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const DIO = '/dio';
   static const NEWS_HEADLINES = '/news-headlines';
   static const SEARCH_NEWS = '/search-news';
+  static const LANDING = '/landing';
 }

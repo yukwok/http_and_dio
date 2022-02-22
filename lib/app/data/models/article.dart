@@ -1,6 +1,6 @@
-// import 'package:json_annotation/json_annotation.dart";
-
 import 'package:json_annotation/json_annotation.dart';
+
+part 'article.g.dart';
 
 @JsonSerializable()
 class Article {
@@ -17,5 +17,20 @@ class Article {
 
   final String publishedAt;
 
-  DateTime get getPublishAtDate => DateTime.tryParse(publishedAt);
+  const Article({
+    required this.title,
+    required this.description,
+    required this.author,
+    required this.content,
+    required this.publishedAt,
+    required this.url,
+    required this.urlToImage,
+  });
+
+  factory Article.fromJson(Map<String, dynamic> json) =>
+      _$ArticleFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ArticleToJson(this);
+
+  // DateTime get getPublishAtDate => DateTime.tryParse(publishedAt);
 }

@@ -6,7 +6,9 @@ import 'package:http_and_dio/app/data/services/http_service_impl.dart';
 
 class NewsRepoImpl implements NewsRepo {
   late HttpService _httpService;
-
+  String TOP_HEADLINES =
+      'https://newsapi.org/v2/top-headlines?country=us&category=science';
+  //&apiKey=c8c5a5ad41ce46388de81dd422994865
   NewsRepoImpl() {
     _httpService = Get.put(HttpServiceImpl());
     _httpService.init();
@@ -15,13 +17,16 @@ class NewsRepoImpl implements NewsRepo {
   @override
   Future<List<Article>> getNewsHeadlinesByCountry(String country) async {
     try {
-      var response = await _httpService.getRequest("url");
-      throw UnimplementedError();
+      print("Country:$country");
+
+      var response = await _httpService.getRequest(TOP_HEADLINES);
+      print(response.data);
 
       return response.data;
     } on Exception catch (e) {
-      // TODO
+      print(e);
     }
+    return [];
   }
 
   @override

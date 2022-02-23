@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
+import 'package:http_and_dio/app/data/repositories/news_repo_impl.dart';
 
 class NewsHeadlinesController extends GetxController {
   //TODO: Implement NewsHeadlinesController
 
   final count = 0.obs;
+  final NewsRepoImpl newsRepoImpl = NewsRepoImpl();
+
   @override
   void onInit() {
     super.onInit();

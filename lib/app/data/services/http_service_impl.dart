@@ -27,11 +27,12 @@ class HttpServiceImpl implements HttpService {
       onError: (e, handler) {
         print(e.message);
       },
-      onRequest: (request, handler) {
-        print(request.method + " " + request.path);
-      },
+      // onRequest: (request, handler) {
+      //   print(request.method + " " + request.path);
+      // },
       onResponse: (response, handler) {
-        print(response.statusCode);
+        print('status code:${response.statusCode}');
+        print('response:$response');
       },
     ));
   }

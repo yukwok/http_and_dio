@@ -17,14 +17,14 @@ class Article {
 
   final String publishedAt;
 
-  const Article({
-    required this.title,
-    required this.description,
-    required this.author,
-    required this.content,
-    required this.publishedAt,
-    required this.url,
-    required this.urlToImage,
+  Article({
+    this.title = "no title",
+    this.description = "no description",
+    this.author = "no author",
+    this.content = " no content",
+    this.publishedAt = "no date",
+    this.url = 'no url',
+    this.urlToImage = 'no urlToImage',
   });
 
   factory Article.fromJson(Map<String, dynamic> json) =>

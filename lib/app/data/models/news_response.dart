@@ -3,7 +3,7 @@ import "package:json_annotation/json_annotation.dart";
 
 part 'news_response.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class NewsResponse {
   final String status;
   final int totalResults;

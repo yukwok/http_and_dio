@@ -5,7 +5,7 @@ part 'building_model.g.dart';
 @JsonSerializable()
 class Building {
   final String district, name;
-  final DateTime dateOfBirth;
+  final DateTime dateOfBirth; // date of birth
 
   const Building(
       {required this.district, required this.name, required this.dateOfBirth});

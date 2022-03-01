@@ -1,9 +1,46 @@
 import 'package:get/get.dart';
 
-class SearchNewsController extends GetxController {
-  //TODO: Implement SearchNewsController
+import '../../../data/models/article.dart';
+import '../../../data/repositories/news_repo.dart';
+import '../../../data/repositories/news_repo_impl.dart';
 
-  final count = 0.obs;
+class SearchNewsController extends GetxController {
+  int _count = 999;
+  var uiNumber = 0.obs;
+  bool _isLoading = false;
+
+  RxBool get isLoading => _isLoading.obs;
+  RxInt get count => _count.obs;
+
+  late final RxList<Article> _articles;
+
+  late NewsRepo _newsRepo;
+
+  //Functions
+  setLoading() {
+    _isLoading = true;
+    print(_isLoading.toString());
+  }
+
+  setNotLoading() {
+    _isLoading = false;
+    print(_isLoading.toString());
+  }
+
+  increment() {
+    _count++;
+    uiNumber.value++;
+  }
+
+  decrement() {
+    _count--;
+    uiNumber.value--;
+  }
+
+  NewsHeadlinesController() {
+    _newsRepo = Get.find<NewsRepoImpl>();
+  }
+
   @override
   void onInit() {
     super.onInit();
@@ -16,5 +53,4 @@ class SearchNewsController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }

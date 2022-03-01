@@ -8,5 +8,6 @@ class SearchNewsBinding extends Bindings {
     Get.lazyPut<SearchNewsController>(
       () => SearchNewsController(),
     );
+    Get.put(SearchNewsController());
   }
 }

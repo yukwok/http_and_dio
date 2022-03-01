@@ -7,16 +7,14 @@ import 'package:http_and_dio/app/data/repositories/news_repo_impl.dart';
 class NewsHeadlinesController extends GetxController {
   final count = 0.obs;
 
+  late NewsRepo _newsRepo;
+
   late var isLoading = false.obs;
 
   NewsHeadlinesController() {
     _newsRepo = Get.find<NewsRepoImpl>();
   }
   List<Article> articles = [];
-  // RxList<Article>? rx_articles;
-
-  //
-  late NewsRepo _newsRepo;
 
   loadNewsHeadline() async {
     isLoading.value = true;

@@ -4,9 +4,15 @@ import 'package:get/get.dart';
 
 import '../controllers/search_news_controller.dart';
 
+// import '../controllers/search_newscontroller.dart';
+
 class SearchNewsView extends GetView<SearchNewsController> {
+  // var controller = Get.find<SearchNewsController>();
+
   @override
   Widget build(BuildContext context) {
+    // on the screen variables
+
     return Scaffold(
       drawer: Drawer(
           child: ListView(
@@ -42,12 +48,45 @@ class SearchNewsView extends GetView<SearchNewsController> {
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text(
-          'SearchNewsView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+      body: controller.isLoading.isTrue
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: 1,
+              itemBuilder: (context, index) {
+                return Column(
+                  children: [
+                    Text(controller.count.toString()),
+                    Text(controller.uiNumber.toString()),
+                    ElevatedButton(
+                        onPressed: () {
+                          controller.increment();
+                        },
+                        child: Text("+1")),
+                    ElevatedButton(
+                        onPressed: () {
+                          controller.decrement();
+                        },
+                        child: Text("-1")),
+                    // Image.network(controller.articles[index].urlToImage),
+                    // ListTile(
+                    //   tileColor: index.isEven ? Colors.blue[50] : Colors.grey,
+                    //   // title: Text(controller.articles[index].title +
+                    //   //     " " +
+                    //   //     controller.articles[index].publishedAt),
+                    //   subtitle: Text(controller.articles[index].description +
+                    //       " author:" +
+                    //       controller.articles[index].author),
+                    // ),
+                    Divider(
+                      color: Colors.black54,
+                      height: 5,
+                    )
+                  ],
+                );
+              }),
     );
   }
 }

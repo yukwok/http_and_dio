@@ -65,7 +65,7 @@ class SearchNewsView extends GetView<SearchNewsController> {
                   onChanged: (value) async {
                     if (value.length >= 3) {
                       await Future.delayed(Duration(seconds: 3));
-                      controller.loadNewsHeadlineByKeyword(value);
+                      // controller.loadNewsHeadlineByKeyword(value);
                     }
                     print(value);
                   },

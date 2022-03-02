@@ -7,8 +7,7 @@ import '../../../data/repositories/news_repo_impl.dart';
 class SearchNewsController extends GetxController {
   var count = 3.obs;
   var isLoading = false.obs;
-  List<Article> articles =
-      [Article(title: 'title1'), Article(title: 'title2')].obs;
+  List<Article> articles = [Article()].obs;
 
   late NewsRepo _newsRepo;
 

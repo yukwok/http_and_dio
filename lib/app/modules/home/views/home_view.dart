@@ -36,6 +36,13 @@ class HomeView extends GetView<HomeController> {
 
                       // ignore: prefer_const_constructors
                       onPressed: () {
+                        Get.toNamed('/testing-obs');
+                      },
+                      child: Text('obs')),
+                  ElevatedButton(
+
+                      // ignore: prefer_const_constructors
+                      onPressed: () {
                         Get.toNamed('/http-view');
                       },
                       child: Text('大廈名單')),

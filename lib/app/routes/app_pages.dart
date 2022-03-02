@@ -10,8 +10,10 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/http_view/bindings/http_view_binding.dart';
 import '../modules/http_view/views/http_view_view.dart';
-import '../modules/landing/bindings/landing_binding.dart';
-import '../modules/landing/views/landing_view.dart';
+// import '../modules/landing/bindings/landing_binding.dart';
+// import '../modules/landing/views/landing_view.dart';
+import '../modules/testing_obs/bindings/testing_obs_binding.dart';
+import '../modules/testing_obs/views/testing_obs_view.dart';
 
 part 'app_routes.dart';
 
@@ -46,10 +48,15 @@ class AppPages {
       page: () => SearchNewsView(),
       binding: SearchNewsBinding(),
     ),
+    // GetPage(
+    //   name: _Paths.LANDING,
+    //   page: () => LandingView(),
+    //   binding: LandingBinding(),
+    // ),
     GetPage(
-      name: _Paths.LANDING,
-      page: () => LandingView(),
-      binding: LandingBinding(),
+      name: _Paths.TESTING_OBS,
+      page: () => TestingObsView(),
+      binding: TestingObsBinding(),
     ),
   ];
 }

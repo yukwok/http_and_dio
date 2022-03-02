@@ -37,11 +37,12 @@ class NewsRepoImpl implements NewsRepo {
   @override
   Future<List<Article>> getSearchNews(String query) async {
     try {
+      print('query:$query');
       final response = await _httpService.getRequest(SEARCH_HEADLINES + query);
       final parsedResponse = NewsResponse.fromJson(response.data);
 
-      // return parsedResponse.articles;
-      return [];
+      return parsedResponse.articles;
+      // return [];
     } on Exception catch (e) {
       print(e);
       return [];

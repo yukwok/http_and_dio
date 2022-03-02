@@ -38,31 +38,50 @@ class SearchNewsView extends GetView<SearchNewsController> {
           )),
           appBar: AppBar(
             backgroundColor: Colors.grey[200],
-            title: Text(
-              'Search News',
-              style: TextStyle(color: Colors.black87),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Text(
+                  'Search News: ',
+                  style: TextStyle(color: Colors.black87),
+                ),
+                SizedBox(
+                  width: 2,
+                ),
+                Text(
+                  controller.articles.length.toString(),
+                  style: TextStyle(color: Colors.black87),
+                ),
+              ],
             ),
             centerTitle: true,
           ),
-          body: controller.isLoading.value
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Column(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        onChanged: (value) {
-                          print(value);
-                        },
-                        controller: TextEditingController(text: 'hello'),
-                        decoration: InputDecoration(
-                            hintText: 'bitcoin',
-                            label: Text('please enter keyword:')),
+          body: Column(
+            children: [
+              Expanded(
+                flex: 1,
+                child: TextField(
+                  onChanged: (value) async {
+                    if (value.length >= 3) {
+                      await Future.delayed(Duration(seconds: 3));
+                      controller.loadNewsHeadlineByKeyword(value);
+                    }
+                    print(value);
+                  },
+                  decoration: InputDecoration(
+                      hintText: 'bitcoin',
+                      label: Text('please enter keyword:')),
+                ),
+              ),
+              controller.isLoading.value
+                  ? Expanded(
+                      flex: 10,
+                      child: const Center(
+                        child: CircularProgressIndicator(),
                       ),
-                      flex: 1,
-                    ),
-                    Expanded(
+                    )
+                  : Expanded(
                       flex: 10,
                       child: ListView.builder(
                           scrollDirection: Axis.vertical,
@@ -77,8 +96,8 @@ class SearchNewsView extends GetView<SearchNewsController> {
                             );
                           }),
                     ),
-                  ],
-                ),
+            ],
+          ),
         )));
   }
 }

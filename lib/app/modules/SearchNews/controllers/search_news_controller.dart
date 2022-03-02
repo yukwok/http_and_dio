@@ -35,10 +35,27 @@ class SearchNewsController extends GetxController {
     isLoading.value = false;
   }
 
+  loadNewsHeadlineByKeyword(String query) async {
+    isLoading.value = true;
+    try {
+      final result = await _newsRepo.getSearchNews(query);
+
+      if (result != null) {
+        print('result found:$result');
+
+        articles = result;
+        isLoading.value = false;
+      } else {
+        print("no data received");
+      }
+    } on Exception catch (e) {
+      print('Error occurs: $e');
+    }
+    isLoading.value = false;
+  }
+
   increment() {
     count.value++;
-    articles.add(Article(title: count.toString()));
-    loadNewsHeadline();
   }
 
   setLoading() {
@@ -59,7 +76,7 @@ class SearchNewsController extends GetxController {
   void onInit() {
     super.onInit();
     _newsRepo = NewsRepoImpl();
-    loadNewsHeadline();
+    loadNewsHeadlineByKeyword('hong kong');
   }
 
   @override

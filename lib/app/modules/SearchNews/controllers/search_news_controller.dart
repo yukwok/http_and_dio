@@ -78,7 +78,7 @@ class SearchNewsController extends GetxController {
   void onInit() {
     super.onInit();
     _newsRepo = NewsRepoImpl();
-    //loadNewsHeadlineByKeyword('hong kong');
+    loadNewsHeadlineByKeyword('hong kong');
     textEditingController.addListener(() {
       print(textEditingController.text);
     });

@@ -44,6 +44,8 @@ class AppPages {
       binding: NewsHeadlinesBinding(),
     ),
     GetPage(
+      transition: Transition.zoom,
+      transitionDuration: Duration(seconds: 2),
       name: _Paths.SEARCH_NEWS,
       page: () => SearchNewsView(),
       binding: SearchNewsBinding(),

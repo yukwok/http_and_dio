@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../data/models/article.dart';
@@ -12,6 +13,8 @@ class SearchNewsController extends GetxController {
   late NewsRepo _newsRepo;
 
   final String _query = 'bitcoin';
+
+  TextEditingController textEditingController = TextEditingController();
 
   //  Functions
 
@@ -75,12 +78,23 @@ class SearchNewsController extends GetxController {
   void onInit() {
     super.onInit();
     _newsRepo = NewsRepoImpl();
-    loadNewsHeadlineByKeyword('hong kong');
+    //loadNewsHeadlineByKeyword('hong kong');
+    textEditingController.addListener(() {
+      print(textEditingController.text);
+    });
   }
 
   @override
   void onReady() {
     super.onReady();
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is removed from the
+    // widget tree.
+    textEditingController.dispose();
+    super.dispose();
   }
 
   @override

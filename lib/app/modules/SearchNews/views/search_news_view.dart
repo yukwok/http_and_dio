@@ -61,17 +61,41 @@ class SearchNewsView extends GetView<SearchNewsController> {
             children: [
               Expanded(
                 flex: 1,
-                child: TextField(
-                  onChanged: (value) async {
-                    if (value.length >= 3) {
-                      await Future.delayed(Duration(seconds: 3));
-                      // controller.loadNewsHeadlineByKeyword(value);
-                    }
-                    print(value);
-                  },
-                  decoration: InputDecoration(
-                      hintText: 'bitcoin',
-                      label: Text('please enter keyword:')),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Expanded(
+                      flex: 5,
+                      child: TextField(
+                        controller: controller.textEditingController,
+                        // onEditingComplete: () {
+                        //   print(controller.textEditingController.text);
+                        // },
+                        decoration: InputDecoration(
+                            hintText: 'bitcoin',
+                            label: Text('please enter keyword:')),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            print(
+                                'search this=>${controller.textEditingController.text}');
+                            controller.loadNewsHeadlineByKeyword(
+                                controller.textEditingController.text);
+                          },
+                          child: Text('search')),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                  ],
                 ),
               ),
               controller.isLoading.value
@@ -88,9 +112,17 @@ class SearchNewsView extends GetView<SearchNewsController> {
                           itemCount: controller.articles.length,
                           itemBuilder: (context, index) {
                             return ListTile(
+                              isThreeLine: false,
+                              dense: true,
                               title: Text(controller.articles[index].title),
-                              subtitle:
+                              subtitle: Column(
+                                children: [
                                   Text(controller.articles[index].description),
+                                  Text(controller.articles[index].content),
+                                  Text(controller.articles[index].publishedAt),
+                                  Text(controller.articles[index].author),
+                                ],
+                              ),
                               leading: Image.network(
                                   controller.articles[index].urlToImage),
                             );
@@ -101,14 +133,3 @@ class SearchNewsView extends GetView<SearchNewsController> {
         )));
   }
 }
-
-  // Image.network(controller.articles[index].urlToImage),
-                    // ListTile(
-                    //   tileColor: index.isEven ? Colors.blue[50] : Colors.grey,
-                    //   // title: Text(controller.articles[index].title +
-                    //   //     " " +
-                    //   //     controller.articles[index].publishedAt),
-                    //   subtitle: Text(controller.articles[index].description +
-                    //       " author:" +
-                    //       controller.articles[index].author),
-                    // ),

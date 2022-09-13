@@ -8,8 +8,8 @@ import 'package:http_and_dio/app/data/services/http_service_impl.dart';
 class NewsRepoImpl implements NewsRepo {
   late HttpService _httpService;
   String TOP_HEADLINES =
-      'https://newsapi.org/v2/top-headlines?country=us&category=science';
-  //&apiKey=c8c5a5ad41ce46388de81dd422994865
+      'https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=c8c5a5ad41ce46388de81dd422994865';
+  // &apiKey=c8c5a5ad41ce46388de81dd422994865
 
   String SEARCH_HEADLINES = 'https://newsapi.org/v2/everything?q=';
 

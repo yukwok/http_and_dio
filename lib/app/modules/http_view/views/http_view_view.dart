@@ -44,7 +44,7 @@ class HttpViewView extends GetView<HttpViewController> {
                 )),
             Expanded(
               child: Obx(
-                () => (controller.uiListString.length == 0)
+                () => (controller.uiListString.isEmpty)
                     ? Text("No data")
                     : ListView.builder(
                         itemCount: controller.uiListString.length,
